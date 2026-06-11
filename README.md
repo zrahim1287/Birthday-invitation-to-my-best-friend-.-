@@ -1,1 +1,30 @@
-# Birthday-invitation-to-my-best-friend-.-
+[preview.html](https://github.com/user-attachments/files/28839299/preview.html)
+# Birthday-invitation-to-my-best-friend-.-<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Date Invitation</title>
+<style>
+body{margin:0;font-family:Georgia,serif;background:linear-gradient(135deg,#ffe6f0,#fff);text-align:center;color:#333}
+.container{max-width:700px;margin:auto;padding:60px 20px}
+.card{background:white;padding:30px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.12)}
+h1{color:#c2185b}
+.heart{font-size:48px}
+.button{display:inline-block;margin-top:20px;padding:12px 24px;background:#c2185b;color:white;text-decoration:none;border-radius:30px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="heart">💖</div>
+<h1>Happy Birthday, My Love</h1>
+<div class="card">
+<p>For your birthday on <strong>3 July</strong>, I'd love to take you on a romantic date night.</p>
+<p>✨ Dinner at <strong>The Botanic Restaurant</strong> 🌿</p>
+<p>Good food, beautiful moments, and celebrating you together.</p>
+<p><strong>Will you be my date? 💕</strong></p>
+<a class="button" href="#">Yes, I'd love to!</a>
+</div>
+</div>
+</body>
+</html>

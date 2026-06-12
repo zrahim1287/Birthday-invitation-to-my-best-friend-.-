@@ -83,6 +83,30 @@
         text-align: center;
         margin-top: 2rem;
     }
+
+    .choice-buttons {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .choice-btn {
+        padding: 0.8rem 1.6rem;
+        border-radius: 12px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 0.5rem;
+    }
+
+    #no-btn {
+        background: #ccc;
+        color: #333;
+    }
+
+    #yes-btn {
+        background: #ff4f9a;
+        color: white;
+    }
 </style>
 </head>
 
@@ -107,6 +131,15 @@
         and memories we’ll keep forever.
     </p>
 
+    <!-- YES / NO DATE QUESTION -->
+    <div class="choice-buttons">
+        <h2>Will you be my date? 💕💕</h2>
+
+        <button id="no-btn" class="choice-btn">NO, THANKS</button>
+        <button id="yes-btn" class="choice-btn">YES, I’D LOVE TO!</button>
+    </div>
+
+    <!-- MENU BUTTONS -->
     <div class="menu-buttons">
         <a href="https://www.mpwrestaurants.co.uk/our-brands/steakhouse-bar-and-grill/lincoln/menus" 
            class="button-primary" target="_blank">
@@ -123,6 +156,7 @@
 </div>
 
 <script>
+    /* MUSIC BUTTON */
     const audio = document.getElementById("bg-music");
     const btn = document.getElementById("music-toggle");
 
@@ -138,6 +172,15 @@
         } catch (e) {
             console.log("Playback blocked:", e);
         }
+    });
+
+    /* YES / NO BUTTON LOGIC */
+    document.getElementById("yes-btn").addEventListener("click", () => {
+        window.location.href = "#rsvp";
+    });
+
+    document.getElementById("no-btn").addEventListener("click", () => {
+        alert("Aww 😢 but I still think you're amazing!");
     });
 </script>
 

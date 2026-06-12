@@ -2,111 +2,100 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Date Invitation</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: "Poppins", Arial, sans-serif;
+/* --- GLOBAL STYLING --- */
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background-image: url("elephant.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    text-align: center;
+}
 
-        /* Elephant wallpaper */
-        background-image: url("elephant.jpg");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
+/* Dark overlay for readability */
+.overlay {
+    background: rgba(0,0,0,0.55);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
 
-        color: #ffffff;
-    }
+/* Main card */
+.card {
+    background: rgba(255,255,255,0.15);
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 700px;
+    margin: auto;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.3);
+}
 
-    .main-content {
-        background: rgba(0, 0, 0, 0.45);
-        padding: 2rem;
-        border-radius: 18px;
-        max-width: 900px;
-        margin: 2rem auto;
-    }
+/* Buttons */
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #ff4f9a;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.button:hover {
+    transform: scale(1.05);
+}
 
-    h1, h2 {
-        text-align: center;
-        letter-spacing: 1px;
-    }
+/* YES / NO buttons */
+.choice-btn {
+    padding: 12px 24px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+}
+#yes-btn { background: #ff4f9a; color: white; }
+#no-btn { background: #ccc; color: #333; }
 
-    h1 {
-        font-size: 3rem;
-        color: #ffe8a3;
-        text-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
-    }
+/* --- POPUP MODAL (Option C) --- */
+#popup {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+#popup .box {
+    background: white;
+    color: #333;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 400px;
+    margin: 120px auto;
+}
 
-    h2 {
-        color: #ffd1f3;
-    }
+/* --- SECOND SECTION (Option B) --- */
+#more {
+    margin-top: 60px;
+    padding: 40px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 16px;
+}
 
-    p {
-        line-height: 1.6;
-        font-size: 1.1rem;
-    }
-
-    .button-primary {
-        display: inline-block;
-        padding: 0.8rem 1.6rem;
-        border-radius: 999px;
-        border: none;
-        background: linear-gradient(135deg, #ff9a9e, #fecfef);
-        color: #3b1b3b;
-        font-weight: 600;
-        text-decoration: none;
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
-        transition: transform 0.15s ease, box-shadow 0.15s ease;
-        margin-top: 1rem;
-    }
-
-    .button-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    #music-toggle {
-        margin-top: 1rem;
-        padding: 0.6rem 1.2rem;
-        border-radius: 10px;
-        border: none;
-        background: #ffe8a3;
-        color: #3b1b3b;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    .choice-buttons {
-        text-align: center;
-        margin-top: 2rem;
-    }
-
-    .choice-btn {
-        padding: 0.8rem 1.6rem;
-        border-radius: 12px;
-        border: none;
-        font-weight: bold;
-        cursor: pointer;
-        margin: 0.5rem;
-    }
-
-    #no-btn {
-        background: #ccc;
-        color: #333;
-    }
-
-    #yes-btn {
-        background: #ff4f9a;
-        color: white;
-    }
-
-    .menu-buttons {
-        text-align: center;
-        margin-top: 2rem;
-    }
+/* --- TRANSITION ANIMATION (Option D) --- */
+.fade-out {
+    animation: fadeOut 1s forwards;
+}
+@keyframes fadeOut {
+    to { opacity: 0; transform: scale(1.05); }
+}
 </style>
 </head>
 
@@ -114,71 +103,83 @@
 
 <!-- Background Music -->
 <audio id="bg-music" src="wise-man-said.mp3" loop></audio>
-<button id="music-toggle">Play music 🎵</button>
+<button id="music-toggle" class="button" style="background:#ffe6f0;color:#333;">Play Music 🎵</button>
 
-<div class="main-content">
-    <h1>3rd July 2025</h1>
-    <h2>Happy Birthday, My Love 💖</h2>
+<div class="overlay">
 
-    <p>
-        For your special day, I want to take you somewhere as beautiful as you are.  
-        A night made just for us. 💕
-    </p>
+    <div class="card" id="main-card">
+        <div class="heart" style="font-size:48px;">💖</div>
+        <h1>Happy Birthday, My Love</h1>
 
-    <h2>The Botanist 🌿</h2>
-    <p>A romantic evening · Dinner for two · Just us</p>
+        <img src="us.jpg" alt="Our Photo" style="width:80%;border-radius:16px;margin:20px 0;">
 
-    <!-- YES / NO DATE QUESTION -->
-    <div class="choice-buttons">
-        <h2>Will you be my date? 💕💕</h2>
+        <p>For your birthday on <strong>3 July</strong>, I'd love to take you on a romantic date night.</p>
+        <p>✨ Dinner at <strong>The Botanic Restaurant</strong> 🌿</p>
+        <p>Good food, beautiful moments, and celebrating you together.</p>
 
-        <button id="no-btn" class="choice-btn">NO, THANKS</button>
-        <button id="yes-btn" class="choice-btn">YES, I’D LOVE TO!</button>
+        <p><strong>Will you be my date? 💕</strong></p>
+
+        <!-- YES / NO BUTTONS -->
+        <button id="no-btn" class="choice-btn">No, thanks</button>
+        <button id="yes-btn" class="choice-btn">Yes, I'd love to!</button>
     </div>
 
-    <!-- MENU BUTTONS -->
-    <div class="menu-buttons">
-        <a href="https://www.mpwrestaurants.co.uk/our-brands/steakhouse-bar-and-grill/lincoln/menus" 
-           class="button-primary" target="_blank">
-           Steak Menu 🥩
-        </a>
+    <!-- SECOND SECTION (Option B) -->
+    <div id="more">
+        <h2>Our Date Plan 💗</h2>
+        <p>• Dinner at The Botanist 🌿</p>
+        <p>• Dessert at MPW 🍰</p>
+        <p>• A walk under the stars ✨</p>
 
-        <a href="https://www.mpwrestaurants.co.uk/our-brands/steakhouse-bar-and-grill/lincoln/menus" 
-           class="button-primary" target="_blank">
-           Dessert Menu 🍰
-        </a>
+        <a class="button" href="page2.html">Go to Page 2 →</a>
     </div>
 
-    <a href="#rsvp" class="button-primary">RSVP 💌</a>
+</div>
+
+<!-- POPUP MODAL (Option C) -->
+<div id="popup">
+    <div class="box">
+        <h2>Yay! 💕</h2>
+        <p>I can't wait to celebrate with you.</p>
+        <button onclick="document.getElementById('popup').style.display='none'" class="button">Close</button>
+    </div>
 </div>
 
 <script>
-    /* MUSIC BUTTON */
-    const audio = document.getElementById("bg-music");
-    const btn = document.getElementById("music-toggle");
+/* MUSIC BUTTON */
+const audio = document.getElementById("bg-music");
+const musicBtn = document.getElementById("music-toggle");
 
-    btn.addEventListener("click", async () => {
-        try {
-            if (audio.paused) {
-                await audio.play();
-                btn.textContent = "Pause music ⏸️";
-            } else {
-                audio.pause();
-                btn.textContent = "Play music 🎵";
-            }
-        } catch (e) {
-            console.log("Playback blocked:", e);
-        }
-    });
+musicBtn.addEventListener("click", async () => {
+    if (audio.paused) {
+        await audio.play();
+        musicBtn.textContent = "Pause Music ⏸️";
+    } else {
+        audio.pause();
+        musicBtn.textContent = "Play Music 🎵";
+    }
+});
 
-    /* YES / NO BUTTON LOGIC */
-    document.getElementById("yes-btn").addEventListener("click", () => {
-        window.location.href = "#rsvp";
-    });
+/* YES BUTTON — triggers ALL OPTIONS */
+document.getElementById("yes-btn").addEventListener("click", () => {
+    // Option D: Fade animation
+    document.getElementById("main-card").classList.add("fade-out");
 
-    document.getElementById("no-btn").addEventListener("click", () => {
-        alert("Aww 😢 but I still think you're amazing!");
-    });
+    // Option C: Popup
+    setTimeout(() => {
+        document.getElementById("popup").style.display = "block";
+    }, 900);
+
+    // Option B: Scroll to second section
+    setTimeout(() => {
+        document.getElementById("more").scrollIntoView({ behavior: "smooth" });
+    }, 1200);
+});
+
+/* NO BUTTON */
+document.getElementById("no-btn").addEventListener("click", () => {
+    alert("Aww 😢 but I still think you're amazing!");
+});
 </script>
 
 </body>
